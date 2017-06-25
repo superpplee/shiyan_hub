@@ -4,34 +4,26 @@
 
 {% block content %}
 
-<h1>Sign In</h1>
+<h1>Sign up</h1>
 
-<form action="" method="post" name="login">
+<form action="/login" method="post" name="login">
 
 {{form.hidden_tag()}}
 
 <p>
 
-Please enter your OpenID:<br>
+Please enter your name:{{ form.user_name}}</p>
 
-{{form.name(size=80)}}<br>
 
-{% for error in form.errors.name %}
+{% for error in form.errors.user_name %}
 
-<span style="color: red;">[{{ error}}]</span>
+<p style="color: red;">[-] {{ error}}<p>
 
-{% endfor %}<br>
+{% endfor %}
+<p>remember me?{{form.remember_me }}</p>
 
-</p>
+<p>{{form.submit }}</p>
 
-<p>
-Password:<br>
-{{form.password}}<br>
-{% for error in form.errors.password %}
-<span style="color: blue;">[{{ error}}]</span>
-{% endfor %}<br>
-</p>
-<p>{{form.remember_me}} Remember Me</p>
-<p><input type="submit" value="Sign In"></p>
+
 </form>
 {% endblock%}
