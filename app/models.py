@@ -8,7 +8,6 @@ ROLE_ADMIN = 1
 
 class User(db.Model):
 	
-	'''每一个属性定义一个字段'''
 	
 	id = db.Column(db.Integer,primary_key = True)
 
@@ -19,6 +18,10 @@ class User(db.Model):
 	role = db.Column(db.SmallInteger, default = ROLE_USER)
 
 	posts = db.relationship('Post',backref = 'author',lazy = 'dynamic')
+
+	about_me = db.Column(db.String(140))
+
+	last_seen = db.Column(db.DateTime)
 
 	def is_authenticated(self):
 		return True
